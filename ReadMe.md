@@ -19,7 +19,7 @@ sudo usermod -aG docker $USER
 
 3. Pick your domain name, and point it at your server with an A record
 
-4. Run certbot with nginx setup
+4. Run certbot with nginx setup.  Replace `example.com` with your domain name.
 
 ```
 sudo apt install -y nginx python3-certbot-nginx 
@@ -32,6 +32,10 @@ sudo certbot --nginx -d example.com -d www.example.com
  - Add a appserver section.
  - Change the location section under the server 443 to do all the proxy calls.
  - See the sample below
+
+After the certbot call, it lists `/etc/nginx/sites-enabled/default` as the nginx file it generated.
+It has a few lines marked as `# managed by Certbot`.
+
 ```
 upstream app_servers {
     server 127.0.0.1:8000;
